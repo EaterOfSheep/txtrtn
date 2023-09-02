@@ -7,7 +7,7 @@ import (
 
 func flexMenuDisplay(s *tcell.Screen, style tcell.Style){
 
-	drawText(*s, 5, 3, 50, 3, style, fmt.Sprintf("Flex Multiplier: x%v (%vbpm)",flexmulti, bpm*tonemulti*flexmulti))
+	drawText(*s, 5, 3, 50, 3, style, fmt.Sprintf("Flex Scale: %v",flexscale, bpm*tonemulti*flexscale))
 
 }
 
@@ -19,13 +19,13 @@ func flexMenuControl(r rune){
 		case 'l':
 			switch(cursorpos){
 
-				case 0: flexmulti+=0.1
+				case 0: flexscale+=0.1
 
 				}
 			case 'h':
 				switch(cursorpos){
 					case 0:
-						flexmulti-=0.1
+						flexscale-=0.1
 
 
 				}

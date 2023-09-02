@@ -130,5 +130,9 @@ func writeState() string {
         result += "[FROZEN] "
     }
 
+    if result == "" {
+	result = "Running normally."
+    }
+
     return result
 }

@@ -196,6 +196,7 @@ func showterminal() {
 		drawText(s, 5, 20, 100, 20, defStyle, writeState())
 		drawText(s, 5, 21, 50, 21, defStyle, writeTimings())
 		drawText(s, 5, 22, 100, 22, defStyle, writePhases())
+		drawText(s, 5, 23, 100, 23, defStyle, writeFlexing())
 
 
 //		drawText(s, 10, 4, 50, 4, defStyle, fmt.Sprintf("Distortion: %v",distortion))

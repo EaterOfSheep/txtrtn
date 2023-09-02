@@ -59,6 +59,7 @@ func Drumming() float64{
 	if(beatage>SecondsToFrame((60/16)/bpm)){//quarter step
 		beatage=0
 		beatsubstep++
+		updateFlexRatio()
 		//redrawTerminal()
 	}
 
@@ -97,6 +98,7 @@ func Drumming() float64{
 		truebpm := bpm*tones[i].multi
 		if(tones[i].toning || toneall){
 			truebpm*=tonemulti*getPhaseToneMulti()
+			truebpm*=flexratio
 		}else{
 			truebpm*=getPhaseBaseMulti()
 		}
@@ -108,6 +110,5 @@ func Drumming() float64{
 	}
 
 	return sum
-
 
 }
