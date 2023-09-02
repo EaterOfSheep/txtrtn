@@ -9,6 +9,7 @@ func mainMenuDisplay(s *tcell.Screen, style tcell.Style){
 
 	drawText(*s, 5, 3, 50, 3, style, fmt.Sprintf("Base Tempo: %vbpm",bpm))
 	drawText(*s, 5, 4, 50, 4, style, fmt.Sprintf("Tone Multiplier: x%v (%vbpm)",tonemulti, bpm*tonemulti))
+	drawText(*s, 5, 5, 50, 5, style, fmt.Sprintf("Tone Everything: %v",toneall))
 }
 
 
@@ -22,6 +23,11 @@ func mainMenuControl(r rune){
 					bpm+=5
 				case 1:
 					tonemulti+=1
+
+				case 2: toneall=!toneall
+
+					/*
+				case 2:
 
 				case 3:
 					editphase++
@@ -43,6 +49,7 @@ func mainMenuControl(r rune){
 
 				case 11:
 					phases[editphase].tonemulti++
+					*/
 
 
 

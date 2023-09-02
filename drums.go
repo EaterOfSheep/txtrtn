@@ -95,7 +95,7 @@ func Drumming() float64{
 	for i := 0; i < len(tones); i++ {
 		sum+=Clip(tones[i].clip.playSound(), tones[i].clip.volume)
 		truebpm := bpm*tones[i].multi
-		if(tones[i].toning){
+		if(tones[i].toning || toneall){
 			truebpm*=tonemulti*getPhaseToneMulti()
 		}else{
 			truebpm*=getPhaseBaseMulti()

@@ -22,6 +22,9 @@ var bpm float64 = 180
 var tonemulti float64 = 4
 
 
+var toneall bool = false
+
+
 func limitParameters(){
 
 	if(bpm<40){bpm=40}
