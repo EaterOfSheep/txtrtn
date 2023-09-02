@@ -132,6 +132,8 @@ func showterminal() {
 							screenpos=4
 						case '5':
 							screenpos=5
+						case '6':
+							screenpos=6
 					}
 
 					switch(screenpos){
@@ -145,6 +147,8 @@ func showterminal() {
 							genMenuControl(ev.Rune())
 						case 5:
 							flexMenuControl(ev.Rune())
+						case 6:
+							reverbMenuControl(ev.Rune())
 
 
 
@@ -189,6 +193,10 @@ func showterminal() {
 			case 5:
 				drawText(s, 0, 1, 40, 1, boldStyle, "5. Flex Settings")
 				flexMenuDisplay(&s, defStyle)
+
+			case 6:
+				drawText(s, 0, 1, 40, 1, boldStyle, "6. Reverb Settings")
+				reverbMenuDisplay(&s, defStyle)
 
 		}
 

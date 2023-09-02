@@ -42,6 +42,10 @@ func limitParameters(){
 	if(editdrum<0){editdrum=0}
 	if(editdrum>len(tones)-1){editdrum=len(tones)-1}
 
+
+	if(feedback<0){feedback=0}
+	if(feedback>1){feedback=1}
+
 	for drumid := range tones{
 		if(tones[drumid].multi<0.1){tones[drumid].multi=0.1}
 		if(tones[drumid].multi>8){tones[drumid].multi=8}
@@ -98,7 +102,6 @@ func main() {
 						//
 		}
 	}
-
 
 	sr := beep.SampleRate(44100)
 	speaker.Init(sr, sr.N(time.Second/10))
