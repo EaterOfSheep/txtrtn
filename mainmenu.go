@@ -9,7 +9,10 @@ func mainMenuDisplay(s *tcell.Screen, style tcell.Style){
 
 	drawText(*s, 5, 3, 50, 3, style, fmt.Sprintf("Base Tempo: %vbpm",bpm))
 	drawText(*s, 5, 4, 50, 4, style, fmt.Sprintf("Tone Multiplier: x%v (%vbpm)",tonemulti, bpm*tonemulti))
-	drawText(*s, 5, 5, 50, 5, style, fmt.Sprintf("Tone Everything: %v",toneall))
+
+	drawText(*s, 5, 6, 50, 6, style, fmt.Sprintf("Tone Everything: %v",toneall))
+	drawText(*s, 5, 7, 50, 7, style, fmt.Sprintf("Frozen Tones: %v",frozentones))
+	drawText(*s, 5, 8, 50, 8, style, fmt.Sprintf("Frozen Tone Multiplier: x%v (%vbpm)",frozentonemulti, bpm*tonemulti*frozentonemulti))
 }
 
 
@@ -24,7 +27,10 @@ func mainMenuControl(r rune){
 				case 1:
 					tonemulti+=1
 
-				case 2: toneall=!toneall
+				case 3: toneall=!toneall
+
+				case 4: frozentones=!frozentones
+				case 5: frozentonemulti+=1
 
 					/*
 				case 2:
@@ -61,8 +67,13 @@ func mainMenuControl(r rune){
 					case 1:
 						tonemulti-=1
 
+					case 5:
+						frozentonemulti-=1
+
+						/*
 					case 3:
 						editphase--
+
 					case 4:
 						phases[editphase].level--
 					case 9:
@@ -71,6 +82,7 @@ func mainMenuControl(r rune){
 						phases[editphase].avoid--
 					case 11:
 						phases[editphase].tonemulti--
+						*/
 
 				}
 
@@ -81,6 +93,9 @@ func mainMenuControl(r rune){
 					case 1:
 						tonemulti*=2
 
+					case 5:
+						frozentonemulti*=2
+
 				}
 			case 'H':
 				switch(cursorpos){
@@ -88,6 +103,9 @@ func mainMenuControl(r rune){
 						bpm-=100
 					case 1:
 						tonemulti/=2
+
+					case 5:
+						frozentonemulti/=2
 
 				}
 	}

@@ -24,6 +24,9 @@ var tonemulti float64 = 4
 
 var toneall bool = false
 
+var frozentones bool = false
+var frozentonemulti float64 = 1
+
 
 func limitParameters(){
 
