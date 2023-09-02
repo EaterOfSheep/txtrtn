@@ -117,6 +117,9 @@ func showterminal() {
 								cursorpos--
 							}
 
+						case 'g':
+							cursorpos=0
+
 						case '0':
 							screenpos=0
 						case '1':
