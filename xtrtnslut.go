@@ -45,6 +45,9 @@ func limitParameters(){
 
 	if(feedback<0){feedback=0}
 	if(feedback>1){feedback=1}
+	if(reverbLength<0.2){reverbLength=0.2}
+
+	if(reverbLength>4.8){reverbLength=4.8}
 
 	for drumid := range tones{
 		if(tones[drumid].multi<0.1){tones[drumid].multi=0.1}

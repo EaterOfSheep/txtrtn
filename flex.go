@@ -9,6 +9,7 @@ var frozentoneflex bool = false
 var flexratio float64 = 1
 var flexscale float64 = 1
 var flextype int = 0
+var flexFreq int = 1
 
 func writeFlexing() string{
 
@@ -38,7 +39,7 @@ func flexTypeName() string{
 
 func updateFlexRatio() {
 
-	flexratio = 1+(flexProcess(deepCompletionRatio())*flexscale)
+	flexratio = 1+(flexProcess(variableCompletionRatio())*flexscale)
 
 }
 
@@ -57,6 +58,12 @@ func flexProcess(x float64) float64{
 		}
 
 		return 0
+
+}
+
+func variableCompletionRatio() float64{
+
+	return math.Mod(deepCompletionRatio() * ((float64)(flexFreq)),1.0)
 
 }
 
