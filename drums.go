@@ -109,6 +109,6 @@ func Drumming() float64{
 
 	}
 
-	return sum
+	return reverb(sum)
 
 }
