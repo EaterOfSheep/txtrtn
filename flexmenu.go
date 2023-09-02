@@ -7,7 +7,10 @@ import (
 
 func flexMenuDisplay(s *tcell.Screen, style tcell.Style){
 
-	drawText(*s, 5, 3, 50, 3, style, fmt.Sprintf("Flex Scale: %v",flexscale, bpm*tonemulti*flexscale))
+	drawText(*s, 5, 3, 50, 3, style, fmt.Sprintf("Flexing: %v",flexing))
+	drawText(*s, 5, 4, 50, 4, style, fmt.Sprintf("Flex Type: %s",flexTypeName()))
+	drawText(*s, 5, 5, 50, 5, style, fmt.Sprintf("Flex Scale: %v",flexscale))
+
 
 }
 
@@ -19,25 +22,27 @@ func flexMenuControl(r rune){
 		case 'l':
 			switch(cursorpos){
 
-				case 0: flexscale+=0.1
+			case 0: flexing=!flexing
+			case 1: flextype++
+			case 2: flexscale+=0.1
 
-				}
-			case 'h':
-				switch(cursorpos){
-					case 0:
-						flexscale-=0.1
-
-
-				}
-
-			case 'L':
-				switch(cursorpos){
-
-				}
-			case 'H':
-				switch(cursorpos){
+			}
+		case 'h':
+			switch(cursorpos){
+				case 1: flextype--
+				case 2: flexscale-=0.1
 
 
-				}
+			}
+
+		case 'L':
+			switch(cursorpos){
+
+			}
+		case 'H':
+			switch(cursorpos){
+
+
+			}
 	}
 }

@@ -13,6 +13,7 @@ func mainMenuDisplay(s *tcell.Screen, style tcell.Style){
 	drawText(*s, 5, 6, 50, 6, style, fmt.Sprintf("Tone Everything: %v",toneall))
 	drawText(*s, 5, 7, 50, 7, style, fmt.Sprintf("Frozen Tones: %v",frozentones))
 	drawText(*s, 5, 8, 50, 8, style, fmt.Sprintf("Frozen Tone Multiplier: x%v (%vbpm)",frozentonemulti, bpm*tonemulti*frozentonemulti))
+	drawText(*s, 5, 9, 50, 9, style, fmt.Sprintf("Frozen Tone Flex: %v",frozentoneflex))
 }
 
 
@@ -31,6 +32,7 @@ func mainMenuControl(r rune){
 
 				case 4: frozentones=!frozentones
 				case 5: frozentonemulti+=1
+				case 6: frozentoneflex=!frozentoneflex
 
 					/*
 				case 2:
