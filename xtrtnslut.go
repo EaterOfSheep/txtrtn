@@ -118,3 +118,17 @@ func main() {
 	showterminal()
 
 }
+
+func writeState() string {
+    result := ""
+
+    if toneall {
+        result += "[ALLTONES] "
+    }
+
+    if frozentones {
+        result += "[FROZEN] "
+    }
+
+    return result
+}

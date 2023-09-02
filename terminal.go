@@ -130,6 +130,8 @@ func showterminal() {
 							screenpos=3
 						case '4':
 							screenpos=4
+						case '5':
+							screenpos=5
 					}
 
 					switch(screenpos){
@@ -141,6 +143,8 @@ func showterminal() {
 							drumMenuControl(ev.Rune())
 						case 4:
 							genMenuControl(ev.Rune())
+						case 5:
+							flexMenuControl(ev.Rune())
 
 
 
@@ -182,12 +186,17 @@ func showterminal() {
 			case 4:
 				drawText(s, 0, 1, 40, 1, boldStyle, "4. Generation Settings")
 				genMenuDisplay(&s, defStyle)
+			case 5:
+				drawText(s, 0, 1, 40, 1, boldStyle, "5. Flex Settings")
+				flexMenuDisplay(&s, defStyle)
 
 		}
 
 
-		drawText(s, 5, 20, 50, 20, defStyle, writeTimings())
-		drawText(s, 5, 21, 100, 21, defStyle, writePhases())
+		drawText(s, 5, 20, 100, 20, defStyle, writeState())
+		drawText(s, 5, 21, 50, 21, defStyle, writeTimings())
+		drawText(s, 5, 22, 100, 22, defStyle, writePhases())
+
 
 //		drawText(s, 10, 4, 50, 4, defStyle, fmt.Sprintf("Distortion: %v",distortion))
 
