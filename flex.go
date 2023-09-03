@@ -51,7 +51,7 @@ func flexProcess(x float64) float64{
 
 		switch(flextype){
 
-		case 0: return math.Sin(x*math.Pi*2)+1
+		case 0: return (math.Sin(x*math.Pi*2)/2)+1
 		case 1: return x
 		case 2: if x < 0.5 {return 2*x} else {return 1-((x-0.5)*2)}
 
