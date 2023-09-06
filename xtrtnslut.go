@@ -84,6 +84,10 @@ func limitParameters(){
 func main() {
 
 
+    ///--------------------
+
+
+
 	files, err := ioutil.ReadDir("./sounds")
 
 	if err != nil {
@@ -108,6 +112,10 @@ func main() {
 
 	sr := beep.SampleRate(44100)
 	speaker.Init(sr, sr.N(time.Second/10))
+
+
+
+
 	speaker.Play(XTRTN())
 	defer speaker.Close()
 

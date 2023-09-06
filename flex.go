@@ -26,10 +26,12 @@ func flexTypeName() string{
 
 
 		case 0: return "Sine"
-
 		case 1: return "Sawtooth"
-
 		case 2: return "Triangle"
+		case 3: return "Square"
+		case 4: return "Pulse"
+		case 5: return "4pulse"
+		case 6: return "8pulse"
 	}
 
 	return "Unknown"
@@ -51,9 +53,12 @@ func flexProcess(x float64) float64{
 
 		switch(flextype){
 
-		case 0: return (math.Sin(x*math.Pi*2)/2)+1
+		case 0: return (math.Sin(x*math.Pi*2)/2)+0.5
 		case 1: return x
 		case 2: if x < 0.5 {return 2*x} else {return 1-((x-0.5)*2)}
+		case 3: if x < 0.5 {return 1} else {return 0}
+		case 4: if x < 0.25 {return 1} else {return 0}
+		case 5: if x < 0.125 {return 1} else {return 0}
 
 		}
 
