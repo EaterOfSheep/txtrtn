@@ -59,6 +59,7 @@ func flexProcess(x float64) float64{
 		case 3: if x < 0.5 {return 1} else {return 0}
 		case 4: if x < 0.25 {return 1} else {return 0}
 		case 5: if x < 0.125 {return 1} else {return 0}
+		case 6: if x < 0.0625 {return 1} else {return 0}
 
 		}
 

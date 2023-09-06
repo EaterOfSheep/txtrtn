@@ -10,8 +10,8 @@ func mainMenuDisplay(s *tcell.Screen, style tcell.Style){
 	drawText(*s, 5, 3, 50, 3, style, fmt.Sprintf("Base Tempo: %vbpm",bpm))
 	drawText(*s, 5, 4, 50, 4, style, fmt.Sprintf("Tone Multiplier: x%v (%vbpm)",tonemulti, bpm*tonemulti))
 
-	drawText(*s, 5, 6, 50, 6, style, fmt.Sprintf("Tone Everything: %v",toneall))
-	drawText(*s, 5, 7, 50, 7, style, fmt.Sprintf("Frozen Tones: %v",frozentones))
+	drawText(*s, 5, 6, 50, 6, style, fmt.Sprintf("Tone Everything (T): %v",toneall))
+	drawText(*s, 5, 7, 50, 7, style, fmt.Sprintf("Frozen Tones (F): %v",frozentones))
 	drawText(*s, 5, 8, 50, 8, style, fmt.Sprintf("Frozen Tone Multiplier: x%v (%vbpm)",frozentonemulti, bpm*tonemulti*frozentonemulti))
 	drawText(*s, 5, 9, 50, 9, style, fmt.Sprintf("Frozen Tone Flex: %v",frozentoneflex))
 }

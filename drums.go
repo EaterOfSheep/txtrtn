@@ -109,7 +109,7 @@ func Drumming() float64{
 
 			for j := 0; j < len(samples); j++ {
 
-				if(samples[j].playing){samplingnow=true}
+				if(samples[j].playing && samples[j].interrupting){samplingnow=true}
 
 			}
 

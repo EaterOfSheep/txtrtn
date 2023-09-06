@@ -4,15 +4,25 @@ package main
 
 var samples []Sample
 
+var samplesBoost = 1.0
+
 type Sample struct{
 	clip SoundClip
-	playing bool
 	name string
+	playing bool
+	interrupting bool
 }
 
 
 func (s *Sample) play(){
 	s.clip.restartSound()
+	s.interrupting=true
+	s.playing=true
+}
+
+func (s *Sample) playGentle(){
+	s.clip.restartSound()
+	s.interrupting=false
 	s.playing=true
 }
 
@@ -38,7 +48,7 @@ func Sampling() float64 {
 
 	}
 
-	return sum
+	return sum*samplesBoost
 
 
 

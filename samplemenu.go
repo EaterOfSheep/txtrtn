@@ -10,10 +10,11 @@ var editsample int = 0
 func sampleMenuDisplay(s *tcell.Screen, style tcell.Style){
 
 	drawText(*s, 5, 3, 50, 3, style, fmt.Sprintf("Sample %d: %s",editsample,samples[editsample].name))
+	drawText(*s, 5, 4, 50, 4, style, "Play! (Space)")
 
-	drawText(*s, 5, 4, 50, 4, style, "Fire!")
+	drawText(*s, 5, 5, 50, 5, style, "Background (B)")
 
-	drawText(*s, 5, 6, 50, 6, style, fmt.Sprintf("Length: %.2fs [%.2f%%]",(float64)(len(samples[editsample].clip.wave))/44100.0, intPercentage(samples[editsample].clip.age,len(samples[editsample].clip.wave))))
+	drawText(*s, 5, 7, 50,76, style, fmt.Sprintf("Length: %.2fs [%.2f%%]",(float64)(len(samples[editsample].clip.wave))/44100.0, intPercentage(samples[editsample].clip.age,len(samples[editsample].clip.wave))))
 
 
 
@@ -39,6 +40,8 @@ func sampleMenuControl(r rune){
 					editsample++
 				case 1:
 					samples[editsample].play()
+				case 2:
+					samples[editsample].playGentle()
 
 
 			}

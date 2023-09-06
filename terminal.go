@@ -110,6 +110,15 @@ func showterminal() {
 						case ' ':
 							samples[editsample].play()
 
+						case 'b':
+							samples[editsample].playGentle()
+
+						case 'f':
+							frozentones=!frozentones
+
+						case 't':
+							toneall=!toneall
+
 
 						case 'j':
 							if(cursorpos<20){
