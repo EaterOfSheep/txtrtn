@@ -104,11 +104,20 @@ func Drumming() float64{
 		}
 
 		if(canTonePlay(tones[i])&&tones[i].clip.age>SecondsToFrame(60/truebpm)){
-			tones[i].clip.restartSound()
+
+			var samplingnow = false
+
+			for j := 0; j < len(samples); j++ {
+
+				if(samples[j].playing){samplingnow=true}
+
+			}
+
+			if(!samplingnow){tones[i].clip.restartSound()}
 		}
 
 	}
 
-	return reverb(sum)
+	return reverb(sum+Sampling())
 
 }

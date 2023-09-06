@@ -42,6 +42,9 @@ func limitParameters(){
 	if(editdrum<0){editdrum=0}
 	if(editdrum>len(tones)-1){editdrum=len(tones)-1}
 
+	if(editsample<0){editsample=0}
+	if(editsample>len(samples)-1){editsample=len(samples)-1}
+
 
 	if(feedback<0){feedback=0}
 	if(feedback>1){feedback=1}
@@ -87,8 +90,8 @@ func main() {
     ///--------------------
 
 
-
-	files, err := ioutil.ReadDir("./sounds")
+    //load drums:
+	files, err := ioutil.ReadDir("./sounds/drums")
 
 	if err != nil {
 		log.Fatal(err)
@@ -101,7 +104,7 @@ func main() {
 			if len(f) > 0 {
 
 				if(f[1]=="wav"){
-					tones = append(tones, Tone{createSound("sounds/"+file.Name()),false,false,1,f[0],-1,-1})
+					tones = append(tones, Tone{createSound("sounds/drums/"+file.Name()),false,false,1,f[0],-1,-1})
 				}
 
 			}
@@ -109,6 +112,34 @@ func main() {
 						//
 		}
 	}
+
+
+	// load misc:
+	miscfiles, err := ioutil.ReadDir("./sounds/misc/")
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	for _, file := range miscfiles {
+		if(!file.IsDir()){
+
+			f := strings.Split(file.Name(), ".")
+			if len(f) > 0 {
+
+				if(f[1]=="wav"){
+					samples = append(samples, Sample{createSound("sounds/misc/"+file.Name()),false,f[0]})
+				}
+
+			}
+
+						//
+		}
+	}
+
+
+
+
 
 	sr := beep.SampleRate(44100)
 	speaker.Init(sr, sr.N(time.Second/10))

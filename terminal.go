@@ -107,6 +107,10 @@ func showterminal() {
 					switch(ev.Rune()){
 
 
+						case ' ':
+							samples[editsample].play()
+
+
 						case 'j':
 							if(cursorpos<20){
 								cursorpos++
@@ -134,6 +138,8 @@ func showterminal() {
 							screenpos=5
 						case '6':
 							screenpos=6
+						case '7':
+							screenpos=7
 					}
 
 					switch(screenpos){
@@ -149,6 +155,8 @@ func showterminal() {
 							flexMenuControl(ev.Rune())
 						case 6:
 							reverbMenuControl(ev.Rune())
+						case 7:
+							sampleMenuControl(ev.Rune())
 
 
 
@@ -197,6 +205,10 @@ func showterminal() {
 			case 6:
 				drawText(s, 0, 1, 40, 1, boldStyle, "6. Reverb Settings")
 				reverbMenuDisplay(&s, defStyle)
+
+			case 7:
+				drawText(s, 0, 1, 40, 1, boldStyle, "7. Sampler Settings")
+				sampleMenuDisplay(&s, defStyle)
 
 		}
 
