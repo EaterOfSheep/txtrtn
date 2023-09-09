@@ -45,6 +45,9 @@ func limitParameters(){
 	if(editsample<0){editsample=0}
 	if(editsample>len(samples)-1){editsample=len(samples)-1}
 
+	if(editsong<0){editsong=0}
+	if(editsong>len(songs)-1){editsong=len(songs)-1}
+
 
 	if(feedback<0){feedback=0}
 	if(feedback>1){feedback=1}
