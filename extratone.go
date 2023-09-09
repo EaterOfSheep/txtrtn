@@ -59,7 +59,7 @@ func XTRTN() beep.Streamer {
 		for i := range samples {
 
 			//limitParameters()
-			displacement := Drumming()
+			displacement := reverb(Drumming()+Sampling())
 
 
 		//	displacement := Clip(playSound(kickwav, t) + playSound(snarewav, t),distortion)

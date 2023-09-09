@@ -11,20 +11,16 @@ type Sample struct{
 	name string
 	playing bool
 	interrupting bool
+	looping bool
 }
 
 
 func (s *Sample) play(){
 	s.clip.restartSound()
-	s.interrupting=true
 	s.playing=true
 }
 
-func (s *Sample) playGentle(){
-	s.clip.restartSound()
-	s.interrupting=false
-	s.playing=true
-}
+
 
 
 

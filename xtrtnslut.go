@@ -18,7 +18,7 @@ var beatstep = 0
 var beatsubstep = 0
 var beatage = 0
 
-var bpm float64 = 180
+var bpm float64 = 100
 var tonemulti float64 = 4
 
 
@@ -128,7 +128,7 @@ func main() {
 			if len(f) > 0 {
 
 				if(f[1]=="wav"){
-					samples = append(samples, Sample{createSound("sounds/misc/"+file.Name()),f[0],false,false})
+					samples = append(samples, Sample{createSound("sounds/misc/"+file.Name()),f[0],false,false,false})
 				}
 
 			}

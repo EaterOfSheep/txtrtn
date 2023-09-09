@@ -52,6 +52,8 @@ func canTonePlay(t Tone) bool{
 }
 
 
+
+
 func Drumming() float64{
 
 	beatage++
@@ -74,6 +76,15 @@ func Drumming() float64{
 	}
 
 	if(beat>3){
+
+
+
+		for i := 0; i < len(samples); i++ {
+			if(samples[i].looping){
+				samples[i].play()
+			}
+		}
+
 		beat=0
 		bar++
 	}
@@ -118,6 +129,6 @@ func Drumming() float64{
 
 	}
 
-	return reverb(sum+Sampling())
+	return sum
 
 }

@@ -57,7 +57,7 @@ func drumMenuControl(r rune){
 						tones[editdrum].avoid++
 					}
 				case 6:
-					tones[editdrum].clip.volume+=0.2
+					tones[editdrum].clip.volume+=0.05
 
 
 
@@ -82,7 +82,7 @@ func drumMenuControl(r rune){
 						tones[editdrum].avoid--
 					}
 				case 6:
-					tones[editdrum].clip.volume-=0.2
+					tones[editdrum].clip.volume-=0.05
 			}
 
 		case 'L':
