@@ -2,7 +2,7 @@ package main
 
 
 
-var feedback float64 = 0.7
+var feedback float64 = 0.5
 var reverbPosition int = 0
 var reverbLength float64 = 0.2 //max 5 as defined by reverbBufferSize
 

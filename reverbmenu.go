@@ -22,15 +22,15 @@ func reverbMenuControl(r rune){
 		case 'l':
 			switch(cursorpos){
 
-			case 0: feedback+=0.1
-			case 1: reverbLength+=0.1
+			case 0: feedback+=0.02
+			case 1: reverbLength+=0.02
 
 			}
 		case 'h':
 			switch(cursorpos){
 
-			case 0: feedback-=0.1
-			case 1: reverbLength-=0.1
+			case 0: feedback-=0.02
+			case 1: reverbLength-=0.02
 
 
 			}
