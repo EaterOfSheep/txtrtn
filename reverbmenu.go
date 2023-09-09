@@ -7,9 +7,9 @@ import (
 
 func reverbMenuDisplay(s *tcell.Screen, style tcell.Style){
 
-	drawText(*s, 5, 3, 50, 3, style, fmt.Sprintf("Feedback: %v",feedback))
+	drawText(*s, 5, 3, 50, 3, style, fmt.Sprintf("Feedback: %.2f",feedback))
 
-	drawText(*s, 5, 4, 50, 4, style, fmt.Sprintf("Length: %v",reverbLength))
+	drawText(*s, 5, 4, 50, 4, style, fmt.Sprintf("Length: %.2f",reverbLength))
 
 
 }

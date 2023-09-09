@@ -16,7 +16,7 @@ func writeFlexing() string{
 	if !flexing {return "No flex"}
 
 
-	return "Flex: "+flexTypeName()+" | "+fmt.Sprintf("Ratio: x%v",flexratio)
+	return "Flex: "+flexTypeName()+" | "+fmt.Sprintf("Ratio: x%.2f",flexratio)
 
 }
 

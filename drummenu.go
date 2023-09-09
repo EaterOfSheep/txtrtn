@@ -15,7 +15,7 @@ func drumMenuDisplay(s *tcell.Screen, style tcell.Style){
 	drawText(*s, 5, 6, 50, 6, style, fmt.Sprintf("Tempo Multi: %v",tones[editdrum].multi))
 	drawText(*s, 5, 7, 50, 7, style, fmt.Sprintf("Phase Dependence: %d",tones[editdrum].depend))
 	drawText(*s, 5, 8, 50, 8, style, fmt.Sprintf("Phase Avoidance: %d",tones[editdrum].avoid))
-	drawText(*s, 5, 9, 50, 9, style, fmt.Sprintf("Volume: %v",tones[editdrum].clip.volume))
+	drawText(*s, 5, 9, 50, 9, style, fmt.Sprintf("Volume: %.2f",tones[editdrum].clip.volume))
 
 }
 
