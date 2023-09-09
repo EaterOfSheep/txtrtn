@@ -148,6 +148,8 @@ func showterminal() {
 							screenpos=6
 						case '7':
 							screenpos=7
+						case '8':
+							screenpos=8
 					}
 
 					switch(screenpos){
@@ -165,6 +167,8 @@ func showterminal() {
 							reverbMenuControl(ev.Rune())
 						case 7:
 							sampleMenuControl(ev.Rune())
+						case 8:
+							songMenuControl(ev.Rune())
 
 
 
@@ -217,6 +221,9 @@ func showterminal() {
 			case 7:
 				drawText(s, 0, 1, 40, 1, boldStyle, "7. Sampler Settings")
 				sampleMenuDisplay(&s, defStyle)
+			case 8:
+				drawText(s, 0, 1, 40, 1, boldStyle, "8. Song Settings")
+				songMenuDisplay(&s, defStyle)
 
 		}
 

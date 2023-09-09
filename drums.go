@@ -30,7 +30,7 @@ func clearTones(){
 
 func syncDrums(){
 		for i := 0; i < len(tones); i++ {
-			if(tones[i].playing&&!(tones[i].clip.age<len(tones[i].clip.wave))){
+			if(tones[i].playing&&!((int)(tones[i].clip.age)<len(tones[i].clip.wave))){
 				tones[i].clip.age=44100*3
 			}
 		}
@@ -59,6 +59,7 @@ func Drumming() float64{
 	beatage++
 
 	if(beatage>SecondsToFrame((60/16)/bpm)){//quarter step
+		loopSamples(5)
 		beatage=0
 		beatsubstep++
 		updateFlexRatio()
@@ -66,30 +67,26 @@ func Drumming() float64{
 	}
 
 	if(beatsubstep>3){
+		loopSamples(4)
 		beatsubstep=0
 		beatstep++
 	}
 
 	if(beatstep>3){
+		loopSamples(3)
 		beatstep=0
 		beat++
 	}
 
 	if(beat>3){
-
-
-
-		for i := 0; i < len(samples); i++ {
-			if(samples[i].looping){
-				samples[i].play()
-			}
-		}
-
+		loopSamples(2)
 		beat=0
 		bar++
 	}
 
 	if(bar>3){
+
+		loopSamples(1)
 		bar=0
 		superbar++
 		if(autoregen){
@@ -99,7 +96,9 @@ func Drumming() float64{
 	}
 
 	if(superbar>3){
+		loopSamples(0)
 		superbar=0
+
 	}
 
 	var sum float64
@@ -114,7 +113,7 @@ func Drumming() float64{
 			truebpm*=getPhaseBaseMulti()
 		}
 
-		if(canTonePlay(tones[i])&&tones[i].clip.age>SecondsToFrame(60/truebpm)){
+		if(canTonePlay(tones[i])&& (int)(tones[i].clip.age)>SecondsToFrame(60/truebpm)){
 
 			var samplingnow = false
 

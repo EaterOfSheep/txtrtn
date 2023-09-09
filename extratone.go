@@ -13,7 +13,7 @@ import (
 type SoundClip struct{
 	wave []float64
 	volume float64
-	age int
+	age float64
 }
 
 func createSound(wavpath string) SoundClip{
@@ -59,7 +59,7 @@ func XTRTN() beep.Streamer {
 		for i := range samples {
 
 			//limitParameters()
-			displacement := reverb(Drumming()+Sampling())
+			displacement := reverb(Drumming()+Sampling()+Singing())
 
 
 		//	displacement := Clip(playSound(kickwav, t) + playSound(snarewav, t),distortion)
@@ -94,8 +94,26 @@ func (clip *SoundClip) playSound() float64{
 
 			//freq := 600*math.Exp(-(decayspeed*t))
 			//return math.Sin(freq*t*math.Pi)
-			if(clip.age<len(clip.wave)-1){
-				return clip.wave[clip.age]
+			if((int)(clip.age)<len(clip.wave)-1){
+				return clip.wave[(int)(clip.age)]
+			}else{
+				return 0
+			}
+
+}
+
+
+func (clip *SoundClip) playSoundAtSpeed(speed float64) float64{
+
+			clip.age+=speed
+
+			var intage = (int)(clip.age)
+
+
+			//freq := 600*math.Exp(-(decayspeed*t))
+			//return math.Sin(freq*t*math.Pi)
+			if(intage<len(clip.wave)-1){
+				return clip.wave[intage]
 			}else{
 				return 0
 			}

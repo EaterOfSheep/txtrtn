@@ -114,6 +114,30 @@ func main() {
 	}
 
 
+	// song misc:
+	songfiles, err := ioutil.ReadDir("./sounds/songs/")
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	for _, file := range songfiles {
+		if(!file.IsDir()){
+
+			f := strings.Split(file.Name(), ".")
+			if len(f) > 0 {
+
+				if(f[1]=="wav"){
+					songs = append(songs, Song{createSound("sounds/songs/"+file.Name()),f[0],false,false})
+				}
+
+			}
+
+						//
+		}
+	}
+
+
 	// load misc:
 	miscfiles, err := ioutil.ReadDir("./sounds/misc/")
 
@@ -128,7 +152,7 @@ func main() {
 			if len(f) > 0 {
 
 				if(f[1]=="wav"){
-					samples = append(samples, Sample{createSound("sounds/misc/"+file.Name()),f[0],false,false,false})
+					samples = append(samples, Sample{createSound("sounds/misc/"+file.Name()),f[0],false,false,false,1})
 				}
 
 			}
