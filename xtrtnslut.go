@@ -28,6 +28,11 @@ var frozentones bool = false
 var frozentonemulti float64 = 1
 
 
+var drumsVolume float64 = 1
+var songsVolume float64 = 1
+var samplesVolume float64 = 1
+
+
 func limitParameters(){
 
 	if(bpm<40){bpm=40}

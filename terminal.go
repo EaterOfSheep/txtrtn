@@ -164,7 +164,7 @@ func showterminal() {
 						case 5:
 							flexMenuControl(ev.Rune())
 						case 6:
-							reverbMenuControl(ev.Rune())
+							audioMenuControl(ev.Rune())
 						case 7:
 							sampleMenuControl(ev.Rune())
 						case 8:
@@ -215,8 +215,8 @@ func showterminal() {
 				flexMenuDisplay(&s, defStyle)
 
 			case 6:
-				drawText(s, 0, 1, 40, 1, boldStyle, "6. Reverb Settings")
-				reverbMenuDisplay(&s, defStyle)
+				drawText(s, 0, 1, 40, 1, boldStyle, "6. Audio Settings")
+				audioMenuDisplay(&s, defStyle)
 
 			case 7:
 				drawText(s, 0, 1, 40, 1, boldStyle, "7. Sampler Settings")
