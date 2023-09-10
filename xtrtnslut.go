@@ -22,6 +22,7 @@ var bpm float64 = 100
 var tonemulti float64 = 4
 
 
+var pausedrums bool = false
 var toneall bool = false
 
 var frozentones bool = false
@@ -218,6 +219,11 @@ func writeState() string {
     if toneall {
         result += "[ALLTONES] "
     }
+
+    if pausedrums {
+        result += "[DRUMSPAUSED] "
+    }
+
 
     if frozentones {
         result += "[FROZEN] "

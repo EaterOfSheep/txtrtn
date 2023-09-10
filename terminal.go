@@ -110,6 +110,9 @@ func showterminal() {
 						case ' ':
 							samples[editsample].play()
 
+						case 'z':
+							pausedrums = !pausedrums
+
 
 
 						case 'f':

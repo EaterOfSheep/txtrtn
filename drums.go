@@ -49,6 +49,8 @@ func canTonePlay(t Tone) bool{
 	if(t.depend==-1){return true}
 
 
+
+
 	return phases[t.depend].on
 
 }
@@ -127,7 +129,7 @@ func Drumming() float64{
 
 			}
 
-			if(!samplingnow){tones[i].trueage = 0; tones[i].clip.restartSound()}
+			if(!samplingnow && !pausedrums){tones[i].trueage = 0; tones[i].clip.restartSound()}
 		}
 
 	}
