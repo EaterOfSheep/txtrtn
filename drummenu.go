@@ -16,6 +16,7 @@ func drumMenuDisplay(s *tcell.Screen, style tcell.Style){
 	drawText(*s, 5, 7, 50, 7, style, fmt.Sprintf("Phase Dependence: %d",tones[editdrum].depend))
 	drawText(*s, 5, 8, 50, 8, style, fmt.Sprintf("Phase Avoidance: %d",tones[editdrum].avoid))
 	drawText(*s, 5, 9, 50, 9, style, fmt.Sprintf("Volume: %.2f",tones[editdrum].clip.volume))
+	drawText(*s, 5, 10, 50, 10, style, fmt.Sprintf("Speed: x%.2f",tones[editdrum].clip.speed))
 
 }
 
@@ -58,6 +59,8 @@ func drumMenuControl(r rune){
 					}
 				case 6:
 					tones[editdrum].clip.volume+=0.05
+				case 7:
+					tones[editdrum].clip.speed+=0.02
 
 
 
@@ -83,6 +86,9 @@ func drumMenuControl(r rune){
 					}
 				case 6:
 					tones[editdrum].clip.volume-=0.05
+
+				case 7:
+					tones[editdrum].clip.speed-=0.02
 			}
 
 		case 'L':

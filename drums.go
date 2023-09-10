@@ -12,6 +12,7 @@ type Tone struct{
 	name string
 	depend int
 	avoid int
+	trueage int
 }
 
 func clearTones(){
@@ -30,7 +31,8 @@ func clearTones(){
 
 func syncDrums(){
 		for i := 0; i < len(tones); i++ {
-			if(tones[i].playing&&!((int)(tones[i].clip.age)<len(tones[i].clip.wave))){
+			if(tones[i].playing&&!((int)(tones[i].trueage)<len(tones[i].clip.wave))){
+				tones[i].trueage=44100*3
 				tones[i].clip.age=44100*3
 			}
 		}
@@ -105,6 +107,7 @@ func Drumming() float64{
 
 	for i := 0; i < len(tones); i++ {
 		sum+=Clip(tones[i].clip.playSound(), tones[i].clip.volume)
+		tones[i].trueage++
 		truebpm := bpm*tones[i].multi
 		if(tones[i].toning || toneall){
 			truebpm*=tonemulti*getPhaseToneMulti()
@@ -113,7 +116,7 @@ func Drumming() float64{
 			truebpm*=getPhaseBaseMulti()
 		}
 
-		if(canTonePlay(tones[i])&& (int)(tones[i].clip.age)>SecondsToFrame(60/truebpm)){
+		if(canTonePlay(tones[i])&& (int)(tones[i].trueage)>SecondsToFrame(60/truebpm)){
 
 			var samplingnow = false
 
@@ -123,7 +126,7 @@ func Drumming() float64{
 
 			}
 
-			if(!samplingnow){tones[i].clip.restartSound()}
+			if(!samplingnow){tones[i].trueage = 0; tones[i].clip.restartSound()}
 		}
 
 	}

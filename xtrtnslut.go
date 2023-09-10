@@ -72,6 +72,10 @@ func limitParameters(){
 
 		if(tones[drumid].clip.volume> 3){tones[drumid].clip.volume=3}
 
+		if(tones[drumid].clip.speed< 0.05){tones[drumid].clip.speed=0.05}
+
+		if(tones[drumid].clip.speed> 5){tones[drumid].clip.speed=5}
+
 	}
 
 
@@ -112,7 +116,7 @@ func main() {
 			if len(f) > 0 {
 
 				if(f[1]=="wav"){
-					tones = append(tones, Tone{createSound("sounds/drums/"+file.Name()),false,false,1,f[0],-1,-1})
+					tones = append(tones, Tone{createSound("sounds/drums/"+file.Name()),false,false,1,f[0],-1,-1,0})
 				}
 
 			}
