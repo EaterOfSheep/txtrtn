@@ -69,7 +69,6 @@ func limitParameters(){
 
 
 		if(tones[drumid].clip.volume< 0.05){tones[drumid].clip.volume=0.05}
-
 		if(tones[drumid].clip.volume> 3){tones[drumid].clip.volume=3}
 
 		if(tones[drumid].clip.speed< 0.04){tones[drumid].clip.speed=0.04}
@@ -79,9 +78,15 @@ func limitParameters(){
 	}
 
 	for sampleid := range samples{
-		if(samples[sampleid].clip.speed< 0.04){samples[sampleid].clip.speed=0.04}
 
+		if(samples[sampleid].clip.volume< 0.05){samples[sampleid].clip.volume=0.05}
+		if(samples[sampleid].clip.volume> 3){samples[sampleid].clip.volume=3}
+
+		if(samples[sampleid].clip.speed< 0.04){samples[sampleid].clip.speed=0.04}
 		if(samples[sampleid].clip.speed> 5){samples[sampleid].clip.speed=5}
+
+		if(samples[sampleid].loopfreq<0){samples[sampleid].loopfreq=0}
+		if(samples[sampleid].loopfreq>4){samples[sampleid].loopfreq=4}
 
 	}
 
