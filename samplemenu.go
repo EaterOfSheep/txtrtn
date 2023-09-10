@@ -13,11 +13,14 @@ func sampleMenuDisplay(s *tcell.Screen, style tcell.Style){
 	drawText(*s, 5, 4, 50, 4, style, "Play! (Space)")
 	drawText(*s, 5, 5, 50, 5, style, fmt.Sprintf("Background: %t",!samples[editsample].interrupting))
 	drawText(*s, 5, 6, 50, 6, style, fmt.Sprintf("Looping: %t",samples[editsample].looping))
+	drawText(*s, 5, 7, 50, 7, style, fmt.Sprintf("Loop Level: %s",sampleLoopFreqName(samples[editsample])))
 
-	drawText(*s, 5, 7, 50, 7, style, fmt.Sprintf("Looping: %s",sampleLoopFreqName(samples[editsample])))
+	drawText(*s, 5, 8, 50, 8, style, fmt.Sprintf("Loop Location 0: %t",samples[editsample].location[0]))
+	drawText(*s, 5, 9, 50, 9, style, fmt.Sprintf("Loop Location 1: %t",samples[editsample].location[1]))
+	drawText(*s, 5, 10, 50, 10, style, fmt.Sprintf("Loop Location 2: %t",samples[editsample].location[2]))
+	drawText(*s, 5, 11, 50, 11, style, fmt.Sprintf("Loop Location 3: %t",samples[editsample].location[3]))
 
-
-	drawText(*s, 5, 9, 50,9, style, fmt.Sprintf("Length: %.2fs [%.2f%%]",(float64)(len(samples[editsample].clip.wave))/44100.0, intPercentage((int)(samples[editsample].clip.age),len(samples[editsample].clip.wave))))
+	drawText(*s, 5, 13, 50,13, style, fmt.Sprintf("Length: %.2fs [%.2f%%]",(float64)(len(samples[editsample].clip.wave))/44100.0, intPercentage((int)(samples[editsample].clip.age),len(samples[editsample].clip.wave))))
 
 
 
@@ -27,12 +30,11 @@ func sampleMenuDisplay(s *tcell.Screen, style tcell.Style){
 func sampleLoopFreqName(s Sample) string{
 
 	switch(s.loopfreq){
-		case 0: return "4Superbar"
-		case 1: return "Superbar"
-		case 2: return "Bar"
-		case 3: return "Beat"
-		case 4: return "Step"
-		case 5: return "Substep"
+		case 0: return "Superbar"
+		case 1: return "Bar"
+		case 2: return "Beat"
+		case 3: return "Step"
+		case 4: return "Substep"
 	}
 	return "???"
 }
@@ -63,6 +65,15 @@ func sampleMenuControl(r rune){
 					samples[editsample].looping = !samples[editsample].looping
 				case 4:
 					samples[editsample].loopfreq++
+
+				case 5:
+					samples[editsample].location[0]=!samples[editsample].location[0]
+				case 6:
+					samples[editsample].location[1]=!samples[editsample].location[1]
+				case 7:
+					samples[editsample].location[2]=!samples[editsample].location[2]
+				case 8:
+					samples[editsample].location[3]=!samples[editsample].location[3]
 
 
 			}

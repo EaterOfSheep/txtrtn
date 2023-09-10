@@ -13,6 +13,7 @@ type Sample struct{
 	interrupting bool
 	looping bool
 	loopfreq int
+	location [4]bool
 }
 
 
@@ -22,10 +23,10 @@ func (s *Sample) play(){
 }
 
 
-func loopSamples(x int){
+func loopSamples(x int, y int){
 
 		for i := 0; i < len(samples); i++ {
-			if(samples[i].looping && samples[i].loopfreq==x){
+			if(samples[i].looping && samples[i].loopfreq==x && samples[i].location[y]){
 				samples[i].play()
 			}
 		}

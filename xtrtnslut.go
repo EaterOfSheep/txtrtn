@@ -160,7 +160,7 @@ func main() {
 			if len(f) > 0 {
 
 				if(f[1]=="wav"){
-					samples = append(samples, Sample{createSound("sounds/misc/"+file.Name()),f[0],false,false,false,1})
+					samples = append(samples, Sample{createSound("sounds/misc/"+file.Name()),f[0],false,false,false,1,[4]bool{true,false,false,false}})
 				}
 
 			}

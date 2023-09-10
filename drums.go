@@ -59,7 +59,8 @@ func Drumming() float64{
 	beatage++
 
 	if(beatage>SecondsToFrame((60/16)/bpm)){//quarter step
-		loopSamples(5)
+
+		loopSamples(4,beatsubstep)
 		beatage=0
 		beatsubstep++
 		updateFlexRatio()
@@ -67,26 +68,26 @@ func Drumming() float64{
 	}
 
 	if(beatsubstep>3){
-		loopSamples(4)
+		loopSamples(3,beatstep)
 		beatsubstep=0
 		beatstep++
 	}
 
 	if(beatstep>3){
-		loopSamples(3)
+		loopSamples(2,beat)
 		beatstep=0
 		beat++
 	}
 
 	if(beat>3){
-		loopSamples(2)
+		loopSamples(1,bar)
 		beat=0
 		bar++
 	}
 
 	if(bar>3){
 
-		loopSamples(1)
+		loopSamples(0,superbar)
 		bar=0
 		superbar++
 		if(autoregen){
@@ -96,7 +97,6 @@ func Drumming() float64{
 	}
 
 	if(superbar>3){
-		loopSamples(0)
 		superbar=0
 
 	}
