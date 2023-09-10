@@ -2,9 +2,9 @@ package main
 
 
 
-var feedback float64 = 0.5
+var feedback float64 = 0.3
 var reverbPosition int = 0
-var reverbLength float64 = 0.2 //max 5 as defined by reverbBufferSize
+var reverbLength float64 = 3 //max 5 as defined by reverbBufferSize
 
 const reverbBufferSize int = 44100*5
 var reverbBuffer [reverbBufferSize]float64
