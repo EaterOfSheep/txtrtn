@@ -62,6 +62,12 @@ func limitParameters(){
 
 	if(reverbLength>4.9){reverbLength=4.9}
 
+
+	if(boosttoneupslew<0){boosttoneupslew=0}
+	if(boosttonedownslew<0){boosttonedownslew=0}
+	if(boosttonemulti<1){boosttonemulti=1}
+	if(boosttonemulti>128){boosttonemulti=128}
+
 	for drumid := range tones{
 		if(tones[drumid].multi<(1.0/32.0)){tones[drumid].multi=(1.0/32.0)}
 		if(tones[drumid].multi>16){tones[drumid].multi=16}

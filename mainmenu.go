@@ -121,6 +121,9 @@ func mainMenuControl(r rune){
 					case 5:
 						frozentonemulti*=2
 
+					case 8:
+						boosttonemulti*=2
+
 				}
 			case 'H':
 				switch(cursorpos){
@@ -131,6 +134,9 @@ func mainMenuControl(r rune){
 
 					case 5:
 						frozentonemulti/=2
+
+					case 8:
+						boosttonemulti/=2
 
 				}
 	}
