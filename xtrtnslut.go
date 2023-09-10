@@ -29,6 +29,7 @@ var frozentones bool = false
 var frozentonemulti float64 = 1
 
 
+
 var drumsVolume float64 = 1
 var songsVolume float64 = 1
 var samplesVolume float64 = 1
@@ -221,9 +222,12 @@ func writeState() string {
     }
 
     if pausedrums {
-        result += "[DRUMSPAUSED] "
+        result += "[PAUSED] "
     }
 
+    if boosttones {
+        result += "[BOOST] "
+    }
 
     if frozentones {
         result += "[FROZEN] "

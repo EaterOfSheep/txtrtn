@@ -112,6 +112,8 @@ func showterminal() {
 
 						case 'z':
 							pausedrums = !pausedrums
+						case 'x':
+							boosttones = !boosttones
 
 
 
