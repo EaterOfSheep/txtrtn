@@ -72,9 +72,16 @@ func limitParameters(){
 
 		if(tones[drumid].clip.volume> 3){tones[drumid].clip.volume=3}
 
-		if(tones[drumid].clip.speed< 0.05){tones[drumid].clip.speed=0.05}
+		if(tones[drumid].clip.speed< 0.04){tones[drumid].clip.speed=0.04}
 
 		if(tones[drumid].clip.speed> 5){tones[drumid].clip.speed=5}
+
+	}
+
+	for sampleid := range samples{
+		if(samples[sampleid].clip.speed< 0.04){samples[sampleid].clip.speed=0.04}
+
+		if(samples[sampleid].clip.speed> 5){samples[sampleid].clip.speed=5}
 
 	}
 
