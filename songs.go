@@ -11,12 +11,29 @@ type Song struct{
 	name string
 	playing bool
 	looping bool
+	queued bool
+}
+
+func (s *Song) queue(){
+	s.playing=false
+	s.queued=true
 }
 
 
 func (s *Song) play(){
 	s.clip.restartSound()
 	s.playing=true
+	s.queued=false
+}
+
+func playQueuedSongs(){
+
+	for i := 0; i < len(songs); i++ {
+		if(songs[i].queued){
+			songs[i].play()
+		}
+	}
+
 }
 
 

@@ -96,6 +96,7 @@ func Drumming() float64{
 			go autoGenTimer()
 		}
 		syncDrums() //sync on superbar for now
+		playQueuedSongs() //play queued songs on superbar
 	}
 
 	if(superbar>3){

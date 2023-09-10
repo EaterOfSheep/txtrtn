@@ -152,7 +152,7 @@ func main() {
 			if len(f) > 0 {
 
 				if(f[1]=="wav"){
-					songs = append(songs, Song{createSound("sounds/songs/"+file.Name()),f[0],false,false})
+					songs = append(songs, Song{createSound("sounds/songs/"+file.Name()),f[0],false,false,false})
 				}
 
 			}
