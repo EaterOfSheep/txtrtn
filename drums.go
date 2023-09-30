@@ -18,10 +18,10 @@ var nextSnare = 1
 var nextHat = 1
 var nextClap = 1
 
-var kickPlaying = true
-var snarePlaying = true
-var hatPlaying = true
-var clapPlaying = true
+var kickPlaying = false
+var snarePlaying = false
+var hatPlaying = false
+var clapPlaying = false
 
 var drumKitToning = [4]bool{false, false, false, false}
 var drumKitMulti = [4]float64{1, 1, 1, 1}
@@ -204,4 +204,48 @@ func Drumming() float64{
 
 	return sum
 
+}
+
+func writeDrums() string {
+    result := ""
+
+    if kickPlaying {
+	    if(drumKitToning[0]){
+		result+="[K-TONE] "
+	    }else{
+		result += "[KICK] "
+	    }
+    }
+
+    if snarePlaying {
+	    if(drumKitToning[1]){
+		result+="[S-TONE] "
+	    }else{
+		result += "[SNARE] "
+	    }
+    }
+
+    if clapPlaying {
+	    if(drumKitToning[2]){
+		result+="[C-TONE] "
+	    }else{
+		result += "[CLAP] "
+	    }
+    }
+
+    if hatPlaying {
+	    if(drumKitToning[3]){
+		result+="[H-TONE] "
+	    }else{
+		result += "[HAT] "
+	    }
+    }
+
+
+
+    if result == "" {
+	result = "No active drums."
+    }
+
+    return result
 }

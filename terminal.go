@@ -176,7 +176,7 @@ func showterminal() {
 							mainMenuControl(ev.Rune())
 						case 2:
 							phaseMenuControl(ev.Rune())
-						case 3:
+						case 9:
 							drumMenuControl(ev.Rune())
 						case 4:
 							genMenuControl(ev.Rune())
@@ -188,7 +188,7 @@ func showterminal() {
 							sampleMenuControl(ev.Rune())
 						case 8:
 							songMenuControl(ev.Rune())
-						case 9:
+						case 3:
 							drumKitMenuControl(ev.Rune())
 
 
@@ -225,8 +225,8 @@ func showterminal() {
 			case 2:
 				drawText(s, 0, 1, 40, 1, boldStyle, "2. Phase Settings")
 				phaseMenuDisplay(&s, defStyle)
-			case 3:
-				drawText(s, 0, 1, 40, 1, boldStyle, "3. Drum Settings")
+			case 9:
+				drawText(s, 0, 1, 40, 1, boldStyle, "9. Drum Settings")
 				drumMenuDisplay(&s, defStyle)
 			case 4:
 				drawText(s, 0, 1, 40, 1, boldStyle, "4. Generation Settings")
@@ -245,8 +245,8 @@ func showterminal() {
 			case 8:
 				drawText(s, 0, 1, 40, 1, boldStyle, "8. Song Settings")
 				songMenuDisplay(&s, defStyle)
-			case 9:
-				drawText(s, 0, 1, 40, 1, boldStyle, "9. Drum Kit Settings")
+			case 3:
+				drawText(s, 0, 1, 40, 1, boldStyle, "3. Drum Kit Settings")
 				drumKitMenuDisplay(&s, defStyle)
 
 		}
@@ -256,6 +256,7 @@ func showterminal() {
 		drawText(s, 5, 21, 50, 21, defStyle, writeTimings())
 		drawText(s, 5, 22, 100, 22, defStyle, writePhases())
 		drawText(s, 5, 23, 100, 23, defStyle, writeFlexing())
+		drawText(s, 5, 24, 100, 24, defStyle, writeDrums())
 
 
 //		drawText(s, 10, 4, 50, 4, defStyle, fmt.Sprintf("Distortion: %v",distortion))
