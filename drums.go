@@ -3,6 +3,26 @@ package main
 //import "fmt"
 
 var tones []Tone
+var kickIds []int
+var snareIds []int
+var clapIds []int
+var hatIds []int
+
+var currentKick = 0
+var currentSnare = 0
+var currentHat = 0
+var currentClap = 0
+
+var nextKick = 1
+var nextSnare = 1
+var nextHat = 1
+var nextClap = 1
+
+var kickPlaying = true
+var snarePlaying = true
+var hatPlaying = true
+var clapPlaying = true
+
 
 type Tone struct{
 	clip SoundClip
@@ -52,6 +72,29 @@ func canTonePlay(t Tone) bool{
 
 
 	return phases[t.depend].on
+
+}
+
+func shouldToneBePlaying(id int) bool{
+
+		if(kickIds[currentKick]==id && kickPlaying){
+			return true
+		}
+
+		if(snareIds[currentSnare]==id && snarePlaying){
+			return true
+		}
+
+		if(clapIds[currentClap]==id && clapPlaying){
+			return true
+		}
+
+		if(hatIds[currentHat]==id && hatPlaying){
+			return true
+		}
+
+		return false
+
 
 }
 
@@ -110,6 +153,10 @@ func Drumming() float64{
 	var sum float64
 
 	for i := 0; i < len(tones); i++ {
+
+		tones[i].playing=shouldToneBePlaying(i)
+
+
 		sum+=Clip(tones[i].clip.playSound(), tones[i].clip.volume)
 		tones[i].trueage++
 		truebpm := bpm*tones[i].multi

@@ -116,14 +116,18 @@ func limitParameters(){
 
 }
 
-func main() {
+func loadDrums(){
 
+	loadKicks()
+	loadSnares()
+	loadHats()
+	loadClaps()
 
-    ///--------------------
+}
 
+func loadClaps(){
 
-    //load drums:
-	files, err := ioutil.ReadDir("./sounds/drums")
+	files, err := ioutil.ReadDir("./sounds/drums/claps")
 
 	if err != nil {
 		log.Fatal(err)
@@ -136,7 +140,79 @@ func main() {
 			if len(f) > 0 {
 
 				if(f[1]=="wav"){
-					tones = append(tones, Tone{createSound("sounds/drums/"+file.Name()),false,false,1,f[0],-1,-1,0})
+					clapIds = append(clapIds, len(tones))
+					tones = append(tones, Tone{createSound("sounds/drums/claps/"+file.Name()),false,false,1,f[0],-1,-1,0})
+				}
+			}					//
+		}
+	}
+}
+
+
+func loadHats(){
+
+	files, err := ioutil.ReadDir("./sounds/drums/hats")
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	for _, file := range files {
+		if(!file.IsDir()){
+
+			f := strings.Split(file.Name(), ".")
+			if len(f) > 0 {
+
+				if(f[1]=="wav"){
+					hatIds = append(hatIds, len(tones))
+					tones = append(tones, Tone{createSound("sounds/drums/hats/"+file.Name()),false,false,1,f[0],-1,-1,0})
+				}
+			}					//
+		}
+	}
+}
+
+
+func loadSnares(){
+
+	files, err := ioutil.ReadDir("./sounds/drums/snares")
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	for _, file := range files {
+		if(!file.IsDir()){
+
+			f := strings.Split(file.Name(), ".")
+			if len(f) > 0 {
+
+				if(f[1]=="wav"){
+					snareIds = append(snareIds, len(tones))
+					tones = append(tones, Tone{createSound("sounds/drums/snares/"+file.Name()),false,false,1,f[0],-1,-1,0})
+				}
+			}					//
+		}
+	}
+}
+
+func loadKicks(){
+
+	files, err := ioutil.ReadDir("./sounds/drums/kicks")
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	for _, file := range files {
+		if(!file.IsDir()){
+
+			f := strings.Split(file.Name(), ".")
+			if len(f) > 0 {
+
+				if(f[1]=="wav"){
+					kickIds = append(kickIds, len(tones))
+					tones = append(tones, Tone{createSound("sounds/drums/kicks/"+file.Name()),false,false,1,f[0],-1,-1,0})
 				}
 
 			}
@@ -144,6 +220,17 @@ func main() {
 						//
 		}
 	}
+
+
+}
+
+func main() {
+
+
+    ///--------------------
+
+
+	loadDrums()
 
 
 	// song misc:
