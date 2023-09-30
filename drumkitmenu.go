@@ -17,7 +17,7 @@ func drumKitMenuDisplay(s *tcell.Screen, style tcell.Style){
 	drawText(*s, 5, 5, 50, 5, style, fmt.Sprintf("Next: %s (%d/%d)",currentDrumName(drumKitEdit,1), currentDrumNumber(drumKitEdit,1), drumArraySize(drumKitEdit)))
 	drawText(*s, 5, 6, 50, 6, style, fmt.Sprintf("Toning: %t",drumKitToning[drumKitEdit]))
 	drawText(*s, 5, 7, 50, 7, style, fmt.Sprintf("Tempo Multi: %.2f",drumKitMulti[drumKitEdit]))
-	drawText(*s, 5, 8, 50, 8, style, fmt.Sprintf("Mute: %t",!drumKitPlaying(drumKitEdit)))
+	drawText(*s, 5, 8, 50, 8, style, fmt.Sprintf("Mute (%s): %t",drumKitMuteKey(drumKitEdit),!drumKitPlaying(drumKitEdit)))
 
 /*
 	drawText(*s, 5, 3, 50, 3, style, fmt.Sprintf("Current Kick: %d: %s",currentKick,tones[kickIds[currentKick]].name))
@@ -37,6 +37,18 @@ func drumKitMenuDisplay(s *tcell.Screen, style tcell.Style){
 
 }
 
+func drumKitMuteKey(d int) string{
+
+			switch(d){
+				case 0: return "u"
+				case 1: return "i"
+				case 2: return "o"
+				case 3: return "p"
+			}
+
+			return "??????"
+}
+
 func drumKitPlaying(d int) bool{
 
 			switch(d){
@@ -45,9 +57,7 @@ func drumKitPlaying(d int) bool{
 				case 2: return clapPlaying
 				case 3: return hatPlaying
 			}
-
 			return false
-
 
 }
 
@@ -215,6 +225,7 @@ func drumKitSwitch(d int, pos int, change int){
 
 
 }
+
 
 func drumKitToggle(d int){
 

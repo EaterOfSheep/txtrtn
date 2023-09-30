@@ -110,6 +110,18 @@ func showterminal() {
 						case ' ':
 							samples[editsample].play()
 
+
+
+
+						case'u':
+							drumKitToggle(0)
+						case'i':
+							drumKitToggle(1)
+						case'o':
+							drumKitToggle(2)
+						case'p':
+							drumKitToggle(3)
+
 						case 'z':
 							pausedrums = !pausedrums
 						case 'x':
