@@ -18,8 +18,8 @@ var beatstep = 0
 var beatsubstep = 0
 var beatage = 0
 
-var bpm float64 = 100
-var tonemulti float64 = 4
+var bpm float64 = 150
+var tonemulti float64 = 8
 
 
 var pausedrums bool = false

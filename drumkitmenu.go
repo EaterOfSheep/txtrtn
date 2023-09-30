@@ -16,6 +16,8 @@ func drumKitMenuDisplay(s *tcell.Screen, style tcell.Style){
 	drawText(*s, 5, 4, 50, 4, style, fmt.Sprintf("Current: %s (%d/%d)",currentDrumName(drumKitEdit,0), currentDrumNumber(drumKitEdit,0), drumArraySize(drumKitEdit)))
 	drawText(*s, 5, 5, 50, 5, style, fmt.Sprintf("Next: %s (%d/%d)",currentDrumName(drumKitEdit,1), currentDrumNumber(drumKitEdit,1), drumArraySize(drumKitEdit)))
 	drawText(*s, 5, 6, 50, 6, style, fmt.Sprintf("Toning: %t",drumKitToning[drumKitEdit]))
+	drawText(*s, 5, 7, 50, 7, style, fmt.Sprintf("Tempo Multi: %.2f",drumKitMulti[drumKitEdit]))
+	drawText(*s, 5, 8, 50, 8, style, fmt.Sprintf("Mute: %t",!drumKitPlaying(drumKitEdit)))
 
 /*
 	drawText(*s, 5, 3, 50, 3, style, fmt.Sprintf("Current Kick: %d: %s",currentKick,tones[kickIds[currentKick]].name))
@@ -35,7 +37,19 @@ func drumKitMenuDisplay(s *tcell.Screen, style tcell.Style){
 
 }
 
+func drumKitPlaying(d int) bool{
 
+			switch(d){
+				case 0: return kickPlaying
+				case 1: return snarePlaying
+				case 2: return clapPlaying
+				case 3: return hatPlaying
+			}
+
+			return false
+
+
+}
 
 
 func currentDrumNumber(d int, pos int) int{
@@ -202,6 +216,21 @@ func drumKitSwitch(d int, pos int, change int){
 
 }
 
+func drumKitToggle(d int){
+
+	switch(d){
+
+		case 0: kickPlaying=!kickPlaying
+		case 1: snarePlaying=!snarePlaying
+		case 2: clapPlaying=!clapPlaying
+		case 3: hatPlaying=!hatPlaying
+
+
+	}
+
+
+}
+
 
 func drumKitMenuControl(r rune){
 
@@ -216,7 +245,15 @@ func drumKitMenuControl(r rune){
 				case 0: if(drumKitEdit<3){drumKitEdit++}else{drumKitEdit=0}
 				case 1: drumKitSwitch(drumKitEdit,0,+1)
 				case 2: drumKitSwitch(drumKitEdit,1,+1)
-			case 3: pushNextDrums()
+				case 3: drumKitToning[drumKitEdit] = !drumKitToning[drumKitEdit]
+				case 4:
+					if(drumKitMulti[drumKitEdit]>0.95){
+						drumKitMulti[drumKitEdit]++
+					}else{
+						drumKitMulti[drumKitEdit]*=2
+					}
+				case 5:
+					drumKitToggle(drumKitEdit)
 
 
 
@@ -226,6 +263,14 @@ func drumKitMenuControl(r rune){
 				case 0: if(drumKitEdit>0){drumKitEdit--}else{drumKitEdit=3}
 				case 1: drumKitSwitch(drumKitEdit,0,-1)
 				case 2: drumKitSwitch(drumKitEdit,1,-1)
+				case 4:
+					if(drumKitMulti[drumKitEdit]>1.05){
+						drumKitMulti[drumKitEdit]--
+					}else{
+						drumKitMulti[drumKitEdit]/=2
+					}
+
+
 
 			}
 

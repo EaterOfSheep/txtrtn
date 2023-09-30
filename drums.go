@@ -24,7 +24,7 @@ var hatPlaying = true
 var clapPlaying = true
 
 var drumKitToning = [4]bool{false, false, false, false}
-var drumKitTempoMulti = [4]float64{1, 1, 1, 1}
+var drumKitMulti = [4]float64{1, 1, 1, 1}
 
 
 type Tone struct{
@@ -101,6 +101,21 @@ func shouldToneBePlaying(id int) bool{
 
 }
 
+func enforceDrumKitRules(id int){
+
+		tones[id].playing=shouldToneBePlaying(id)
+
+		for i:=0;i<4;i++ {
+
+			if(currentDrumToneNumber(i,0)==id){
+				tones[id].multi = drumKitMulti[i]
+				tones[id].toning = drumKitToning[i]
+			}
+		}
+
+
+}
+
 
 
 
@@ -157,7 +172,8 @@ func Drumming() float64{
 
 	for i := 0; i < len(tones); i++ {
 
-		tones[i].playing=shouldToneBePlaying(i)
+		enforceDrumKitRules(i)
+
 
 
 		sum+=Clip(tones[i].clip.playSound(), tones[i].clip.volume)

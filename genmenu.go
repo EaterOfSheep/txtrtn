@@ -17,13 +17,15 @@ func genMenuDisplay(s *tcell.Screen, style tcell.Style){
 	drawText(*s, 5, 6, 50, 6, style, fmt.Sprintf("Tonebursts %d",tonebursts))
 
 
-	drawText(*s, 5, 8, 50, 8, style, fmt.Sprintf("Enable Autoregen: %t",autoregen))
+	drawText(*s, 5, 8, 50, 8, style, fmt.Sprintf("Enable Auto-pattern-generate: %t",autoregen))
 	drawText(*s, 5, 9, 50, 9, style, fmt.Sprintf("Autocount: %d/%d superbars",autoregencount,autoregencountmax))
+	drawText(*s, 5, 10, 50, 10, style, fmt.Sprintf("Muting patterns: %t",generateAvoids))
 
 
 	drawText(*s, 5, 11, 50, 11, style, fmt.Sprintf("Enable Auto-drum-push: %t",autopush))
 	drawText(*s, 5, 12, 50, 12, style, fmt.Sprintf("Autocount: %d/%d superbars",autopushcount,autopushcountmax))
-	drawText(*s, 5, 13, 50, 13, style, fmt.Sprintf("Drum Conservation: %d%",drumConservation))
+	drawText(*s, 5, 13, 50, 13, style, fmt.Sprintf("Drum Conservation: %d%%",drumConservation))
+
 }
 
 
@@ -47,6 +49,9 @@ func genMenuControl(r rune){
 					autoregen=!autoregen
 				case 6:
 					if(autoregencount<31){autoregencount++}
+
+				case 7:
+					generateAvoids=!generateAvoids
 
 				case 8:
 					autopush=!autopush
