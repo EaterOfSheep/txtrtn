@@ -122,6 +122,17 @@ func showterminal() {
 						case'p':
 							drumKitToggle(3)
 
+						case'U':
+							drumKitToneToggle(0)
+						case'I':
+							drumKitToneToggle(1)
+						case'O':
+							drumKitToneToggle(2)
+						case'P':
+							drumKitToneToggle(3)
+
+
+
 						case 'z':
 							pausedrums = !pausedrums
 						case 'x':
