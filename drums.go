@@ -23,6 +23,9 @@ var snarePlaying = true
 var hatPlaying = true
 var clapPlaying = true
 
+var drumKitToning = [4]bool{false, false, false, false}
+var drumKitTempoMulti = [4]float64{1, 1, 1, 1}
+
 
 type Tone struct{
 	clip SoundClip
@@ -138,7 +141,7 @@ func Drumming() float64{
 		loopSamples(0,superbar)
 		bar=0
 		superbar++
-		if(autoregen){
+		if(autoregen || autopush){
 			go autoGenTimer()
 		}
 		syncDrums() //sync on superbar for now

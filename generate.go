@@ -11,6 +11,13 @@ var autoregencount=3
 var autoregencountmax=3
 var autoregens = make(chan bool)
 
+var drumConservation = 80
+
+
+var autopush=true
+var autopushcount = 1
+var autopushcountmax = 1
+
 var gennumber=0
 
 var tonebursts int
@@ -42,6 +49,15 @@ func autoGenTimer(){
 			//autoregen=false
 		}else{
 			autoregencount--
+		}
+	}
+
+	if(autopush){
+		if(autopushcount==0){
+			autopushcount=autopushcountmax
+			pushNextDrums()
+		}else{
+			autopushcount--
 		}
 	}
 

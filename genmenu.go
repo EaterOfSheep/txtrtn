@@ -5,6 +5,8 @@ import (
 	"github.com/gdamore/tcell/v2"
 )
 
+
+
 func genMenuDisplay(s *tcell.Screen, style tcell.Style){
 
 	drawText(*s, 5, 3, 50, 3, style, fmt.Sprintf("Clear Patterns"))
@@ -17,6 +19,11 @@ func genMenuDisplay(s *tcell.Screen, style tcell.Style){
 
 	drawText(*s, 5, 8, 50, 8, style, fmt.Sprintf("Enable Autoregen: %t",autoregen))
 	drawText(*s, 5, 9, 50, 9, style, fmt.Sprintf("Autocount: %d/%d superbars",autoregencount,autoregencountmax))
+
+
+	drawText(*s, 5, 11, 50, 11, style, fmt.Sprintf("Enable Auto-drum-push: %t",autopush))
+	drawText(*s, 5, 12, 50, 12, style, fmt.Sprintf("Autocount: %d/%d superbars",autopushcount,autopushcountmax))
+	drawText(*s, 5, 13, 50, 13, style, fmt.Sprintf("Drum Conservation: %d%",drumConservation))
 }
 
 
@@ -41,6 +48,13 @@ func genMenuControl(r rune){
 				case 6:
 					if(autoregencount<31){autoregencount++}
 
+				case 8:
+					autopush=!autopush
+				case 9:
+					if(autopushcount<31){autopushcount++}
+				case 10:
+					if(drumConservation<100){drumConservation++}
+
 
 
 			}
@@ -54,6 +68,12 @@ func genMenuControl(r rune){
 				case 6:
 					if(autoregencount>0){autoregencount--}
 
+				case 9:
+					if(autopushcount>0){autopushcount--}
+				case 10:
+					if(drumConservation>0){drumConservation--}
+
+
 			}
 
 		case 'L':
@@ -62,6 +82,10 @@ func genMenuControl(r rune){
 				case 6:
 					if(autoregencountmax<31){autoregencountmax++}
 
+				case 9:
+					if(autopushcountmax<31){autopushcountmax++}
+
+
 
 			}
 		case 'H':
@@ -69,6 +93,8 @@ func genMenuControl(r rune){
 
 				case 6:
 					if(autoregencountmax>0){autoregencountmax--}
+				case 9:
+					if(autopushcountmax>0){autopushcountmax--}
 
 			}
 	}
