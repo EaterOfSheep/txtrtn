@@ -6,10 +6,19 @@ import (
 )
 
 var genselect int
-var autoregen bool
-var autoregencount=3
-var autoregencountmax=3
+var autoregen=true
+var autoregencount=1
+var autoregencountmax=1
 var autoregens = make(chan bool)
+
+var drumConservation = 60
+
+var generateAvoids=false
+
+
+var autopush=true
+var autopushcount = 0
+var autopushcountmax = 0
 
 var gennumber=0
 
@@ -45,6 +54,15 @@ func autoGenTimer(){
 		}
 	}
 
+	if(autopush){
+		if(autopushcount==0){
+			autopushcount=autopushcountmax
+			pushNextDrums()
+		}else{
+			autopushcount--
+		}
+	}
+
 }
 
 func addBurst(basemulti float64, tonemulti float64, levels []int, depend int, avoid int) int{
@@ -76,9 +94,13 @@ func generatePatterns(){
 
 	lastbar:=addPhase(1,[4]bool{false,false,false,true}, -1,-1)
 
-	for i := range tones{
-		tones[i].avoid=addBurst(0,0, []int{0,2} ,lastbar,-1)
-		//addPhase(2,randomPhaseLocs(1,3),lastbar,-1)
+	if(generateAvoids){
+		for i := range tones{
+
+			tones[i].avoid=addBurst(0,0, []int{0,2} ,lastbar,-1)
+
+			//addPhase(2,randomPhaseLocs(1,3),lastbar,-1)
+		}
 	}
 
 	//superbars1:=addBurst(2,0, []int{0} ,lastbar,-1)

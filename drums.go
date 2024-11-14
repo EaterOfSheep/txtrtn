@@ -3,6 +3,29 @@ package main
 //import "fmt"
 
 var tones []Tone
+var kickIds []int
+var snareIds []int
+var clapIds []int
+var hatIds []int
+
+var currentKick = 0
+var currentSnare = 0
+var currentHat = 0
+var currentClap = 0
+
+var nextKick = 1
+var nextSnare = 1
+var nextHat = 1
+var nextClap = 1
+
+var kickPlaying = false
+var snarePlaying = false
+var hatPlaying = false
+var clapPlaying = false
+
+var drumKitToning = [4]bool{false, false, false, false}
+var drumKitMulti = [4]float64{1, 1, 1, 1}
+
 
 type Tone struct{
 	clip SoundClip
@@ -55,6 +78,44 @@ func canTonePlay(t Tone) bool{
 
 }
 
+func shouldToneBePlaying(id int) bool{
+
+		if(kickIds[currentKick]==id && kickPlaying){
+			return true
+		}
+
+		if(snareIds[currentSnare]==id && snarePlaying){
+			return true
+		}
+
+		if(clapIds[currentClap]==id && clapPlaying){
+			return true
+		}
+
+		if(hatIds[currentHat]==id && hatPlaying){
+			return true
+		}
+
+		return false
+
+
+}
+
+func enforceDrumKitRules(id int){
+
+		tones[id].playing=shouldToneBePlaying(id)
+
+		for i:=0;i<4;i++ {
+
+			if(currentDrumToneNumber(i,0)==id){
+				tones[id].multi = drumKitMulti[i]
+				tones[id].toning = drumKitToning[i]
+			}
+		}
+
+
+}
+
 
 
 
@@ -95,7 +156,7 @@ func Drumming() float64{
 		loopSamples(0,superbar)
 		bar=0
 		superbar++
-		if(autoregen){
+		if(autoregen || autopush){
 			go autoGenTimer()
 		}
 		syncDrums() //sync on superbar for now
@@ -110,6 +171,11 @@ func Drumming() float64{
 	var sum float64
 
 	for i := 0; i < len(tones); i++ {
+
+		enforceDrumKitRules(i)
+
+
+
 		sum+=Clip(tones[i].clip.playSound(), tones[i].clip.volume)
 		tones[i].trueage++
 		truebpm := bpm*tones[i].multi
@@ -138,4 +204,48 @@ func Drumming() float64{
 
 	return sum
 
+}
+
+func writeDrums() string {
+    result := ""
+
+    if kickPlaying {
+	    if(drumKitToning[0]){
+		result+="[K-TONE] "
+	    }else{
+		result += "[KICK] "
+	    }
+    }
+
+    if snarePlaying {
+	    if(drumKitToning[1]){
+		result+="[S-TONE] "
+	    }else{
+		result += "[SNARE] "
+	    }
+    }
+
+    if clapPlaying {
+	    if(drumKitToning[2]){
+		result+="[C-TONE] "
+	    }else{
+		result += "[CLAP] "
+	    }
+    }
+
+    if hatPlaying {
+	    if(drumKitToning[3]){
+		result+="[H-TONE] "
+	    }else{
+		result += "[HAT] "
+	    }
+    }
+
+
+
+    if result == "" {
+	result = "No active drums."
+    }
+
+    return result
 }
