@@ -155,6 +155,7 @@ func Drumming() float64{
 
 		loopSamples(0,superbar)
 		bar=0
+		bpm+=bpmAutoClimbSbar
 		superbar++
 		if(autoregen || autopush){
 			go autoGenTimer()

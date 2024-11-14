@@ -20,6 +20,10 @@ var autopush=true
 var autopushcount = 0
 var autopushcountmax = 0
 
+
+var bpmAutoClimb = 0.00
+var bpmAutoClimbSbar = 0.00
+
 var gennumber=0
 
 var tonebursts int
@@ -43,6 +47,8 @@ func addPhase(level int, location [4]bool, depend int, avoid int) int{
 }
 
 func autoGenTimer(){
+
+	bpm+=bpmAutoClimb
 
 	if(autoregen){
 		if(autoregencount==0){
