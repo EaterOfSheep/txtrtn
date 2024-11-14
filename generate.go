@@ -5,6 +5,7 @@ import (
 	"time"
 )
 
+
 var genselect int
 var autoregen=true
 var autoregencount=1
@@ -23,6 +24,14 @@ var autopushcountmax = 0
 
 var bpmAutoClimb = 0.00
 var bpmAutoClimbSbar = 0.00
+
+var autoFreezing = false;
+var freezingChance = 20;
+var autoBoosting = false;
+var boostingChance = 30;
+var autoFlexing = false;
+var flexingChance = 10;
+
 
 var gennumber=0
 

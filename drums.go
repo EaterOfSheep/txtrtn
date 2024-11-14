@@ -1,6 +1,10 @@
 package main
 
 //import "fmt"
+import (
+	"math/rand"
+	"time"
+)
 
 var tones []Tone
 var kickIds []int
@@ -116,6 +120,22 @@ func enforceDrumKitRules(id int){
 
 }
 
+func sbarAutomation(){
+
+	rand.Seed(time.Now().UnixNano())
+
+	if(autoBoosting){
+		boosttones=(rand.Intn(100)<boostingChance)
+	}
+	if(autoFreezing){
+		frozentones=(rand.Intn(100)<freezingChance)
+	}
+	if(autoFlexing){
+		flexing=(rand.Intn(100)<flexingChance)
+	}
+
+}
+
 
 
 
@@ -152,6 +172,8 @@ func Drumming() float64{
 	}
 
 	if(bar>3){
+
+		sbarAutomation()
 
 		loopSamples(0,superbar)
 		bar=0
