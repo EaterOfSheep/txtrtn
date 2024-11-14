@@ -5,6 +5,7 @@ import (
 	"time"
 )
 
+
 var genselect int
 var autoregen=true
 var autoregencount=1
@@ -19,6 +20,18 @@ var generateAvoids=false
 var autopush=true
 var autopushcount = 0
 var autopushcountmax = 0
+
+
+var bpmAutoClimb = 0.00
+var bpmAutoClimbSbar = 0.00
+
+var autoFreezing = false;
+var freezingChance = 20;
+var autoBoosting = false;
+var boostingChance = 30;
+var autoFlexing = false;
+var flexingChance = 10;
+
 
 var gennumber=0
 
@@ -43,6 +56,8 @@ func addPhase(level int, location [4]bool, depend int, avoid int) int{
 }
 
 func autoGenTimer(){
+
+	bpm+=bpmAutoClimb
 
 	if(autoregen){
 		if(autoregencount==0){

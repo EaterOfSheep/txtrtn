@@ -153,8 +153,8 @@ func helpDisplay(s *tcell.Screen, style tcell.Style){
 
 	drawText(*s, 5, 8, 100, 8, style, fmt.Sprintf("Use j/k to move the cursor."))
 	drawText(*s, 5, 9, 100, 9, style, fmt.Sprintf("Use h/l to interact with menu items."))
-	drawText(*s, 5, 10, 100, 10, style, fmt.Sprintf("Press 1 - 9 to switch between menus."))
-	drawText(*s, 5, 11, 100, 11, style, fmt.Sprintf("You can return to this guide by pressing 0."))
+	drawText(*s, 5, 10, 100, 10, style, fmt.Sprintf("Press 0 - 9 to switch between menus."))
+	drawText(*s, 5, 11, 100, 11, style, fmt.Sprintf("You can return to this guide by pressing w."))
 
 	drawText(*s, 5, 13, 100, 13, style, fmt.Sprintf("Press q to exit."))
 

@@ -9,7 +9,7 @@ import (
 	"github.com/gdamore/tcell/v2"
 )
 
-var screenpos int = 0
+var screenpos int = -1
 var cursorpos int = 0
 
 func drawText(s tcell.Screen, x1, y1, x2, y2 int, style tcell.Style, text string) {
@@ -160,6 +160,8 @@ func showterminal() {
 						case 'g':
 							cursorpos=0
 
+						case 'w':
+							screenpos=-1
 						case '0':
 							screenpos=0
 						case '1':
@@ -185,6 +187,8 @@ func showterminal() {
 					switch(screenpos){
 						case 1:
 							mainMenuControl(ev.Rune())
+						case 0:
+							automationMenuControl(ev.Rune())
 						case 2:
 							phaseMenuControl(ev.Rune())
 						case 9:
@@ -226,9 +230,13 @@ func showterminal() {
 		drawText(s, 3, 3+cursorpos, 3, 3+cursorpos, defStyle, ">")
 
 		switch(screenpos){
-			case 0:
-				drawText(s, 0, 1, 40, 1, boldStyle, "0. Welcome")
+			case -1:
+				drawText(s, 0, 1, 40, 1, boldStyle, "w. Welcome")
 				helpDisplay(&s, defStyle)
+
+			case 0:
+				drawText(s, 0, 1, 40, 1, boldStyle, "0. Automation")
+				automationMenuDisplay(&s, defStyle)
 
 			case 1:
 				drawText(s, 0, 1, 40, 1, boldStyle, "1. General Settings")

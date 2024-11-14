@@ -12,7 +12,6 @@ func flexMenuDisplay(s *tcell.Screen, style tcell.Style){
 	drawText(*s, 5, 5, 50, 5, style, fmt.Sprintf("Flex Scale: %.2f",flexscale))
 	drawText(*s, 5, 6, 50, 6, style, fmt.Sprintf("Frequency: %v/4sbar",flexFreq))
 
-
 }
 
 

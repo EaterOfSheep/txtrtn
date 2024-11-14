@@ -26,6 +26,10 @@ func genMenuDisplay(s *tcell.Screen, style tcell.Style){
 	drawText(*s, 5, 12, 50, 12, style, fmt.Sprintf("Autocount: %d/%d superbars",autopushcount,autopushcountmax))
 	drawText(*s, 5, 13, 50, 13, style, fmt.Sprintf("Drum Conservation: %d%%",drumConservation))
 
+
+	drawText(*s, 5, 15, 50, 15, style, fmt.Sprintf("Tempo Climb: %vbpm/Sbar",bpmAutoClimb))
+
+
 }
 
 
@@ -60,6 +64,9 @@ func genMenuControl(r rune){
 				case 10:
 					if(drumConservation<100){drumConservation++}
 
+				case 12:
+					if(bpmAutoClimb<100){bpmAutoClimb++}
+
 
 
 			}
@@ -77,6 +84,8 @@ func genMenuControl(r rune){
 					if(autopushcount>0){autopushcount--}
 				case 10:
 					if(drumConservation>0){drumConservation--}
+				case 12:
+					if(bpmAutoClimb>0){bpmAutoClimb--}
 
 
 			}
