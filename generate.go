@@ -32,6 +32,8 @@ var boostingChance = 30;
 var autoFlexing = false;
 var flexingChance = 10;
 
+var autoToneMultiChance = 0;
+
 
 var gennumber=0
 
@@ -100,9 +102,38 @@ func addBurst(basemulti float64, tonemulti float64, levels []int, depend int, av
 func generatePatterns(){
 	gennumber++
 
+
+
 	rand.Seed(time.Now().UnixNano())
 	genselect = -1
 	clearPatterns()
+
+	if(rand.Intn(100)<autoToneMultiChance){
+
+
+		tonemulti=2
+
+		x:=rand.Intn(64)
+
+		if(x<60){tonemulti=4}
+		if(x<56){tonemulti=8}
+		if(x<32){tonemulti=16}
+		if(x<16){tonemulti=32}
+		if(x<8){tonemulti=64}
+		if(x<4){tonemulti=128}
+
+		if(rand.Intn(100)<33){
+			tonemulti = (tonemulti*3)/2
+		}
+
+		if(rand.Intn(100)<10){
+			tonemulti = (tonemulti*5)/2
+		}
+
+		if(rand.Intn(100)<5){
+			tonemulti = (tonemulti*7)/2
+		}
+	}
 
 	//---
 	//levels: 0 sbar, 1 bar, 2 beat, 3 step, 4 sstep

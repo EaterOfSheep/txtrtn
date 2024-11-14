@@ -9,7 +9,7 @@ import (
 
 func automationMenuDisplay(s *tcell.Screen, style tcell.Style){
 
-	drawText(*s, 5, 3, 50, 3, style, fmt.Sprintf("Tempo Climb On Pattern AutoGen: %vbpm",bpmAutoClimb))
+	drawText(*s, 5, 3, 50, 3, style, fmt.Sprintf("Tempo Climb (On AutoGen): %vbpm",bpmAutoClimb))
 	drawText(*s, 5, 4, 50, 4, style, fmt.Sprintf("Tempo Climb On New Sbar: %vbpm",bpmAutoClimbSbar))
 
 
@@ -19,6 +19,9 @@ func automationMenuDisplay(s *tcell.Screen, style tcell.Style){
 	drawText(*s, 5, 8, 50, 8, style, fmt.Sprintf("Autoboost Rate: %v%%",boostingChance))
 	drawText(*s, 5, 9, 50, 9, style, fmt.Sprintf("Autoflexing: %v",autoFlexing))
 	drawText(*s, 5, 10, 50, 10, style, fmt.Sprintf("Autoflex Rate: %v%%",flexingChance))
+
+
+	drawText(*s, 5, 11, 50, 11, style, fmt.Sprintf("Auto Tone Multi: %v%%",autoToneMultiChance))
 
 }
 
@@ -50,6 +53,8 @@ func automationMenuControl(r rune){
 
 				case 7:
 					if(flexingChance<100){flexingChance++}
+				case 8:
+					if(autoToneMultiChance<100){autoToneMultiChance++}
 
 
 
@@ -68,6 +73,8 @@ func automationMenuControl(r rune){
 					if(boostingChance>0){boostingChance--}
 				case 7:
 					if(flexingChance>0){flexingChance--}
+				case 8:
+					if(autoToneMultiChance>0){autoToneMultiChance--}
 
 
 
