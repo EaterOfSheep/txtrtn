@@ -180,6 +180,8 @@ func showterminal() {
 							screenpos=7
 						case '8':
 							screenpos=8
+						case '*':
+							screenpos=18
 						case '9':
 							screenpos=9
 					}
@@ -202,6 +204,8 @@ func showterminal() {
 						case 7:
 							sampleMenuControl(ev.Rune())
 						case 8:
+							djMenuControl(ev.Rune())
+						case 18:
 							songMenuControl(ev.Rune())
 						case 3:
 							drumKitMenuControl(ev.Rune())
@@ -262,8 +266,13 @@ func showterminal() {
 				drawText(s, 0, 1, 40, 1, boldStyle, "7. Sampler Settings")
 				sampleMenuDisplay(&s, defStyle)
 			case 8:
-				drawText(s, 0, 1, 40, 1, boldStyle, "8. Song Settings")
+				drawText(s, 0, 1, 40, 1, boldStyle, "8. DJ Settings (* for song settings)")
+				djMenuDisplay(&s, defStyle)
+			case 18:
+				drawText(s, 0, 1, 40, 1, boldStyle, "*. Song Settings")
 				songMenuDisplay(&s, defStyle)
+
+
 			case 3:
 				drawText(s, 0, 1, 40, 1, boldStyle, "3. Drum Kit Settings")
 				drumKitMenuDisplay(&s, defStyle)
